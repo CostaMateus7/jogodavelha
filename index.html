@@ -9,6 +9,15 @@
   <title>Jogo da Velha </title>
 </head>
 <body>
+  <section id="escolheAdversario">
+    <h1>Escolha seu adversário</h1>
+  <button id="computador" onclick="iniciarJogo(true)">
+    COMPUTADOR
+  </button>
+  <button id="participantes" onclick="iniciarJogo(false)">
+    DOIS PARTICIPANTES
+  </button>
+  </section>
   <div id="conteiner">
     <h1 id="title">Jogo da Velha</h1>
     <div id="tabuleiro">
@@ -27,6 +36,7 @@
     <div id="resul"></div>
     <button id="ok">OK</button>
   </div>
+  
 
 </body>
 </html>

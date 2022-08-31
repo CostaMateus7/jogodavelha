@@ -3,8 +3,19 @@ let casas = document.querySelectorAll('.jogo')
 let resultado = document.querySelector('#resultado')
 const conteiner = document.querySelector('#conteiner')
 const resul = document.querySelector('#resul')
+const maquina = document.querySelector('#computador')
+const participantes = document.querySelector('#participantes')
+const escolheAdversario = document.querySelector('#escolheAdversario')
 let confereEmpate = 0
+
+//Tratar erros
 let encerrar = false
+
+//Escolhe o adversário 
+let jogarContraComputador = false
+
+// maquina.addEventListener('click',iniciarJogo(true))
+// participantes.addEventListener('click',iniciarJogo(false))
 
 let valor = "O"
 const vencedor = [
@@ -19,14 +30,24 @@ const vencedor = [
 ]
 casas.forEach((casa)=>(casa.addEventListener('click', jogada)))
 
+function iniciarJogo(e){
+  jogarContraComputador = e
+  escolheAdversario.style.display='none'
+  conteiner.style.display='block'
+}
+
  function jogada(e){
+  if(encerrar === false){
   valor = valor === "X" ? "O" : "X"
   confereEmpate ++  
   e.target.innerHTML = valor 
   e.target.classList.add(valor)
   e.target.removeEventListener('click', jogada)
   checarVencedor(valor)
+  if(jogarContraComputador===true){
   setTimeout(computador,1000)
+  }
+  }
 }
 function computador(){
   const casasDisponiveis = []

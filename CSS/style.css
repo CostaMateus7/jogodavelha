@@ -8,7 +8,7 @@ body{
   justify-content: center;
   align-items: center;
 }
-#title{
+h1{
   text-align: center;
   margin-bottom: 25px;
 }
@@ -56,6 +56,22 @@ body{
   position: absolute;
   top: 50%;
   transform:translateY(-50%);
+}
+#computador, #participantes{
+  display: inline-block;
+  border: solid 2px black;
+  padding: 5px;
+  cursor: pointer;
+}
+#escolheAdversario{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: solid 2px black;
+  padding: 10px;
+}
+#conteiner{
+  display: none;
 }
 @media screen and (max-width: 550px) {
   .jogo{
