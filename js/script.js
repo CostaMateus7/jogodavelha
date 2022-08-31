@@ -3,6 +3,7 @@ let casas = document.querySelectorAll('.jogo')
 let resultado = document.querySelector('#resultado')
 const conteiner = document.querySelector('#conteiner')
 const resul = document.querySelector('#resul')
+let confereEmpate = 0
 
 let valor = "O"
 const vencedor = [
@@ -15,11 +16,11 @@ const vencedor = [
   [0, 4, 8],
   [2, 4, 6]
 ]
-
 casas.forEach((casa)=>(casa.addEventListener('click', jogada)))
 
 function jogada(e){
   valor = valor === "X" ? "O" : "X"
+  confereEmpate ++  
   e.target.innerHTML = valor 
   e.target.classList.add(valor)
   e.target.removeEventListener('click', jogada)
@@ -36,16 +37,19 @@ function checarVencedor(jogadorDaVez){
   })
 })
       if(ganhador){
-        resultado.style.display = 'block';
-        conteiner.style.filter = 'blur(30px)';
-        resul.innerHTML += `${jogadorDaVez} - Ganhou!`
-        const ok = document.getElementById('ok')
-        ok.addEventListener('click', teste)     
-       
+        encerrarJogo(jogadorDaVez)
+      } else if(confereEmpate == 9){
+        encerrarJogo('Ninguém')
       }
 }
 
 function teste(){
   location.reload()
 }
-
+function encerrarJogo(ganhador_ou_empate){
+  resultado.style.display = 'block';
+  conteiner.style.filter = 'blur(30px)';
+  resul.innerHTML += `${ganhador_ou_empate} Venceu!`
+  const ok = document.getElementById('ok')
+  ok.addEventListener('click', teste)     
+}
